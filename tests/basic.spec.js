@@ -15,5 +15,5 @@ test.only('Second PW Program' , async({browser,page}) =>
 {
      //open page 
      await page.goto("https://web.whatsapp.com/");
-     await console.log(page.title());
+     await page.pause();
 });
