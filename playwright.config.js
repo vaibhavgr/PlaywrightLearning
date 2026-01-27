@@ -17,4 +17,6 @@ const Config=({
   },  
 });
 
+// way to read conf. object.
 module.exports=Config;
+
