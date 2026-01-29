@@ -24,10 +24,21 @@ test.only('Second PW Program' , async({browser,page}) =>
      await expect(loginheaderBtn).toBeVisible();
      await loginheaderBtn.click();
 
-     //input text 
+     //input fields for login (email, pass, loginBtn)
      const emailField = await page.locator('#Email').fill('obsqura24@gmail.com');
      const passwordField = await page.locator('#Password').fill('mypassword');
      const loginButton = await page.locator("[value='Log in']").click();
+
+    //fetching one element from the list using nth
+    //nth always return oen element
+
+    const listItems = await page.locator('.listbox li ').nth(0);
+    await listItems.click();
+    console.log(await listItems.count());
+
+
+
+
      
      await page.pause();
 });
