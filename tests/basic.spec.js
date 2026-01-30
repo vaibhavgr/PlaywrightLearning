@@ -1,6 +1,7 @@
 //{} around test beacuse playwright/test exports an object, and we wan to extract only 
 // test properties from that object. Object Destructing. 
-const {test, expect} = require('@playwright/test')
+const {test, expect} = require('@playwright/test');
+const { log } = require('node:console');
 
 test('First PW Program' , async({browser}) =>
 {
@@ -32,13 +33,39 @@ test.only('Second PW Program' , async({browser,page}) =>
     //fetching one element from the list using nth
     //nth always return oen element
 
-    const listItems = await page.locator('.listbox li ').nth(0);
-    await listItems.click();
-    console.log(await listItems.count());
+    const listItems = await page.locator('.listbox li a').nth(3).click();
+    
+    //all gives list of elemnets 
+    const listofClothes = await page.locator('.product-title a').all();
 
+    //to grab list of text of all elements
+    const listofText = await page.locator('.product-title a').allTextContents();
+    console.log(listofText);
 
+    //length of an array 
+    console.log(listofClothes.length)
 
+    //old method to fetch "blue jeans" from the page list
+    /*for(const element of listofClothes )
+        {
+            if (await element.textContent() === "Blue Jeans")
+                {
+                    element.click();
+                    break;
+                }
+        }
+    */
+   
+    //wait for all api's calls in network to complete 
+    //await page.waitForLoadState('networkidle');
+    
+    //other way without use of loop
+    //await page.locator('.product-title a').filter({hasText:'Blue Jeans'}).click();
+    
 
-     
-     await page.pause();
+    //predicate in locator 
+    await page.locator('.product-title a',{hasText:'Blue Jeans'}).click();
+    
+    await page.pause();
+
 });
