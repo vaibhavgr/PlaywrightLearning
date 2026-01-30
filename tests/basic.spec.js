@@ -57,7 +57,7 @@ test.only('Second PW Program' , async({browser,page}) =>
     */
    
     //wait for all api's calls in network to complete 
-    //await page.waitForLoadState('networkidle');
+    await page.waitForLoadState('networkidle');
     
     //other way without use of loop
     //await page.locator('.product-title a').filter({hasText:'Blue Jeans'}).click();
@@ -65,7 +65,9 @@ test.only('Second PW Program' , async({browser,page}) =>
 
     //predicate in locator 
     await page.locator('.product-title a',{hasText:'Blue Jeans'}).click();
-    
+    const itemDescription = await page.locator('[itemprop="description"] p');
+    console.log(itemDescription.textContent());
+    await expect(itemDescription).toHaveText('Stylish Jeans')  
     await page.pause();
 
 });
