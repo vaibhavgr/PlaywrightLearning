@@ -18,7 +18,7 @@ test(' Single DropDowns' , async({ page}) =>
     
 });
 
-test.only ('Dynamic Dropdowm', async({page})=>
+test ('Dynamic Dropdowm', async({page})=>
     {
      await page.goto("https://vinothqaacademy.com/drop-down/");
      //for scrolling page
@@ -32,6 +32,14 @@ test.only ('Dynamic Dropdowm', async({page})=>
     await page.keyboard.press('Enter');
      await page.pause();
     }
-
 )
 
+test.only('Multiple Dropdwon',async({page})=>
+    {
+        await page.goto("https://vinothqaacademy.com/drop-down/");
+        await page.locator('.select2-selection--multiple').click();
+        await page.keyboard.type("Java" ,{ delay: 100});
+        await page.pause();
+
+    }
+)
