@@ -11,7 +11,7 @@ test('First PW Program' , async({browser}) =>
      await page.goto("https://google.com/");
 });
 
-test.only('Second PW Program' , async({browser,page}) =>
+test('Second PW Program' , async({browser,page}) =>
 {
      //open page 
      await page.goto("https://demowebshop.tricentis.com/");
