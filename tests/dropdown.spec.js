@@ -21,8 +21,6 @@ test(' Single DropDowns' , async({ page}) =>
 test ('Dynamic Dropdowm', async({page})=>
     {
      await page.goto("https://vinothqaacademy.com/drop-down/");
-     //for scrolling page
-    // const pageScroller = await page.locator('.select2-selection__rendered');
      const dynamicDrop = await page.locator('.select2-selection__rendered',{hasText: 'Choose an Account'}).click();
      
      // keyboard options to inputdata or arrowdown/enter
@@ -34,12 +32,22 @@ test ('Dynamic Dropdowm', async({page})=>
     }
 )
 
-test.only('Multiple Dropdwon',async({page})=>
+test('Multiple Dropdwon',async({page})=>
     {
         await page.goto("https://vinothqaacademy.com/drop-down/");
         await page.locator('.select2-selection--multiple').click();
-        await page.keyboard.type("Java" ,{ delay: 100});
-        await page.pause();
 
+        const values = ['Javascript', 'PHP']
+        for (const value of values)
+            {
+                await page.keyboard.type(value ,{ delay: 100});
+                await page.getByRole('option', { dropdownValue: value }).click();
+            }
+        await page.pause();
+        // await page.locator("li[role='option']").filter({hasText:'JavaScript'}).click();
+        // await page.locator('.select2-selection--multiple').click();
+        // await page.locator("li[role='option']").filter({hasText:'PHP'}).click();
+
+        
     }
 )
