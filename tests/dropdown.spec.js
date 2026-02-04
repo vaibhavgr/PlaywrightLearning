@@ -13,7 +13,7 @@ test(' Single DropDowns' , async({ page}) =>
     //single dropdown
      //The short version: :has-text() is a specialized CSS engine feature, while hasText is typically a property or argument used in code.
      //const selectDropdown = page.locator('li.select2-results__option:has-text("London")').click();
-     const selectDropdown = page.locator('li.select2-results__option',{ hasText: 'London'}).click();
+     const selectDropdown = page.locator('li.select2-results__option',{ hasText: 'Mumbai'}).click();
     await page.pause();     
     
 });

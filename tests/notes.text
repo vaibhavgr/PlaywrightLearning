@@ -1,0 +1,13 @@
+Child window concept : 
+In Playwright, there is NO concept called child window.
+Playwright only knows PAGES.
+One browser
+One tab = one page
+New tab opens = new page
+So Playwright must be told:
+👉 “Hey, I am about to open a new tab — please catch it.”
+The ONLY pattern you need to remember ⭐
+WAIT for new page + CLICK at the same time
+We do this using Promise.all.
+
+
