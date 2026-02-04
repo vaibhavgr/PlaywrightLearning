@@ -6,6 +6,7 @@ test(' Single DropDowns' , async({ page}) =>
     //const context = await browser.newContext();
     //const page = await context.newPage();
      //open page 
+     
      await page.goto("https://vinothqaacademy.com/drop-down/");
      const simpleDropdown = page.locator('span.select2-selection__rendered',{ hasText: 'Choose A City' });
      await simpleDropdown.click()
