@@ -10,4 +10,11 @@ The ONLY pattern you need to remember ⭐
 WAIT for new page + CLICK at the same time
 We do this using Promise.all.
 
+---------------------------------------------------------
+frames : 
+If an element is inside an iframe, first go into the iframe, then find the element.
+Playwright gives us 2 easy ways:
+1️⃣ frameLocator() 
+2️⃣ frame() / contentFrame() 
+
 
