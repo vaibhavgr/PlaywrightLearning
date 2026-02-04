@@ -13,11 +13,11 @@ await expect(heading).toHaveText('Opening a new window');
 
 
 //child window -
-const link = await page.locator("//a[text()='Click Here']")
+const link =  page.locator("//a[text()='Click Here']")
 const [newPage] = await Promise.all(
 [
-    context.waitForEvent(page),
-    link.click,
+    context.waitForEvent('page'),
+    link.click(),
 ]);
 
 const title = await newPage.title();
