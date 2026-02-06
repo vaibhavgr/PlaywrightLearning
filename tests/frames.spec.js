@@ -9,8 +9,8 @@ await page.goto('https://vinothqaacademy.com/iframe/');
 
 
 // second method when want to do with frame locator 
-const secondFrame = page.frameLocator(".registeruser");
-await page.getByLabel('First Name').fill('Tanu');
+const secondFrame = page.frameLocator("[class = iframe-container]").frameLocator("registeruser").frameLocator("");
+await page.getByLabel('First Name').fill('vaibhav');
 //await secondFrame.locator(".registration-form").fill('Hey we are in second frame');
 
 await page.pause();
@@ -23,6 +23,9 @@ test.only('Nested Frame', async({page})=>{
         const middleText = await middleFrameLocator.locator("#content").textContent();
         console.log(middleText);
         expect(middleText).toEqual("Middle");
+
+          
+        await page.pause();
     }
 );
 
