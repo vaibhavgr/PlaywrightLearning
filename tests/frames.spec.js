@@ -17,7 +17,7 @@ await page.pause();
 });
 
 
-test.only('Nested Frame', async({page})=>{
+test('Nested Frame', async({page})=>{
         await page.goto('https://the-internet.herokuapp.com/nested_frames');
         const middleFrameLocator =  page.frameLocator("[name = 'frame-top']").frameLocator("[name = 'frame-middle']");
         const middleText = await middleFrameLocator.locator("#content").textContent();
