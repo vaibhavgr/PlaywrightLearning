@@ -29,7 +29,7 @@ await page.locator(".btn-warning").click();
 });
 
 
-test.only('Prompt', async ({page }) => {
+test('Prompt', async ({page }) => {
 await page.goto("https://selenium.qabible.in/javascript-alert.php");
 page.on('dialog', async dialog=>{
     //promise to wait for 2 seconds basically pausing a thread
