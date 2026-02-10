@@ -17,4 +17,15 @@ Playwright gives us 2 easy ways:
 1️⃣ frameLocator() 
 2️⃣ frame() / contentFrame() 
 
+---------------------------------------------------------
+
+Plawright AlertBoxes
+Playwright auto-dismisses alerts if you don’t handle them.
+🔥 Where to Write page.on('dialog')
+✅ Before clicking alert button
+
+
+
+
+
 

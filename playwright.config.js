@@ -13,7 +13,9 @@ const Config=({
   },
   use: {
     browserName : 'chromium',
-    headless : false
+    headless : false,
+    colorScheme: 'dark',
+    
   },  
 });
 
