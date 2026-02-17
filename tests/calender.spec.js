@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-test.only('Easy Universal Date Picker', async ({ page }) => {
+test('Easy Universal Date Picker', async ({ page }) => {
 
   await page.goto("https://selenium.qabible.in/date-picker.php");
 
