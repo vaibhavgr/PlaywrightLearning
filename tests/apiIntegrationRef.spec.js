@@ -92,7 +92,10 @@ async function verifyCartProducts(page) {
 
 async function deleteProductsFromCart(apiContext)
 {
-
+    for(const key in prodMap){
+const deleteCartResponse = await postCall(apiContext , getDeletePayLoad(prodMap[key]) , deleteItemCartURL);
+expect(deleteCartResponse.ok()).toBeTruthy();
+    }
 }
 
 function getDeletePayLoad(prod_id){
