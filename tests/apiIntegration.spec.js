@@ -28,10 +28,10 @@ test.beforeAll(async () => {
         expect(addToCartResponse.ok()).toBeTruthy();
     };
 
-    const cartDelResponse = await apiRequest.post(deleteItemCartURL , 
+    const cartDelResponse = await apiRequest.post(deleteItemCartURL,
         {
-            data : {
-                id : "78bef5ff-f433-1726-7c6b-7e9c04b24a60",
+            data: {
+                id: "78bef5ff-f433-1726-7c6b-7e9c04b24a60",
             }
         }
     )
@@ -45,21 +45,21 @@ test('Api Integration', async ({ page }) => {
     await page.goto('https://www.demoblaze.com');
     await login(page);
 });
-    async function login(page) {
-        await page.getByRole('link', { name: 'Log in' }).click();
-        await page.locator('#loginusername').fill('vaibhav@yopmail.com');
-        await page.locator('#loginpassword').fill('qwerty123');
-        await page.getByRole('button', { name: 'Log in' }).click();
-        await page.getByRole('link', { name: 'Cart' }).click();
+async function login(page) {
+    await page.getByRole('link', { name: 'Log in' }).click();
+    await page.locator('#loginusername').fill('vaibhav@yopmail.com');
+    await page.locator('#loginpassword').fill('qwerty123');
+    await page.getByRole('button', { name: 'Log in' }).click();
+    await page.getByRole('link', { name: 'Cart' }).click();
 
+}
+async function getCartpayload(id, prod_id, cookie) {
+    return {
+        id: id,
+        cookie: cookie,
+        flag: 'true',
+        prod_id: prod_id
     }
-    async function getCartpayload(id, prod_id, cookie) {
-        return {
-            id: id,
-            cookie: cookie,
-            flag: 'true',
-            prod_id: prod_id
-        }
-    }
+}
 
 

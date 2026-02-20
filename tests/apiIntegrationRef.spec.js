@@ -58,7 +58,6 @@ function getCartpayload(id, prod_id, cookie) {
     };
 }
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -80,26 +79,25 @@ async function verifyCartProducts(page) {
     await page.getByRole('link', { name: 'Cart' }).click();
     const locator = page.locator('.success td:nth-child(3)');
     await locator.first().waitFor();
-   const listPrices=await locator.allTextContents();
-    let sum =0;
-    listPrices.forEach(price=>{
-     sum=sum+ Number(price);
-    }) 
+    const listPrices = await locator.allTextContents();
+    let sum = 0;
+    listPrices.forEach(price => {
+        sum = sum + Number(price);
+    })
     console.log(sum);
-     const value=  Number(await page.locator('#totalp').textContent());
+    const value = Number(await page.locator('#totalp').textContent());
     expect(value).toEqual(sum);
 }
 
-async function deleteProductsFromCart(apiContext)
-{
-    for(const key in prodMap){
-const deleteCartResponse = await postCall(apiContext , getDeletePayLoad(prodMap[key]) , deleteItemCartURL);
-expect(deleteCartResponse.ok()).toBeTruthy();
+async function deleteProductsFromCart(apiContext) {
+    for (const key in prodMap) {
+        const deleteCartResponse = await postCall(apiContext, getDeletePayLoad(prodMap[key]), deleteItemCartURL);
+        expect(deleteCartResponse.ok()).toBeTruthy();
     }
 }
 
-function getDeletePayLoad(prod_id){
-    return{
-        id:prod_id
+function getDeletePayLoad(prod_id) {
+    return {
+        id: prod_id
     }
 }
