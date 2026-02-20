@@ -24,7 +24,10 @@ Playwright auto-dismisses alerts if you don’t handle them.
 🔥 Where to Write page.on('dialog')
 ✅ Before clicking alert button
 
-
+-------------------------------------------------------------------
+array.reduce((accumulator, currentValue) => {
+   return newAccumulator
+}, initialValue)
 
 
 

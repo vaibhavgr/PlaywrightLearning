@@ -41,12 +41,10 @@ test.beforeAll(async () => {
 
 
 
-test.only('Api Integration', async ({ page }) => {
+test('Api Integration', async ({ page }) => {
     await page.goto('https://www.demoblaze.com');
     await login(page);
 });
-
-
     async function login(page) {
         await page.getByRole('link', { name: 'Log in' }).click();
         await page.locator('#loginusername').fill('vaibhav@yopmail.com');
@@ -55,8 +53,6 @@ test.only('Api Integration', async ({ page }) => {
         await page.getByRole('link', { name: 'Cart' }).click();
 
     }
-
-
     async function getCartpayload(id, prod_id, cookie) {
         return {
             id: id,
