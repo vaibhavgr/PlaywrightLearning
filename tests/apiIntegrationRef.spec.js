@@ -61,7 +61,7 @@ function getCartpayload(id, prod_id, cookie) {
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 
-test.only('Api Integration', async ({ page }) => {
+test('Api Integration', async ({ page }) => {
     await page.goto('https://www.demoblaze.com');
     await login(page);
     await verifyCartProducts(page);
