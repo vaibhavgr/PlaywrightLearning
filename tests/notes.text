@@ -29,6 +29,8 @@ array.reduce((accumulator, currentValue) => {
    return newAccumulator
 }, initialValue)
 
+-------------------------------------------------------------------
+
 
 
 
