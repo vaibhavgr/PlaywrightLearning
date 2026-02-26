@@ -2,14 +2,14 @@ const {test , request} = require('@playwright/test');
 const{APIutils} = require('./Utils/APIutils.js');
 
 
-let token
+let tokens
 //API Part- test.beforeALL
 test.beforeAll(async()=>{
     const apiContext = await request.newContext();
     const apiUtilsPage = new APIutils(apiContext);
-    token = await apiUtilsPage.authorizeToken()
-    const addpet = await apiUtilsPage.addpet();
-    console.log(token);
+    tokens = await apiUtilsPage.authorizeToken()
+    const addpet = await apiUtilsPage.addpet(tokens);
+    //console.log(token);
     console.log(addpet)
 })
 
@@ -18,7 +18,7 @@ test.only('E2E Kinship Pet Test', async ({page }) => {
 await page.goto("https://www.stg.kinship.com/uk");
 await page.addInitScript(value=>{
   window.localStorage.setItem('access_token',value);  
-}, token)
+}, tokens)
 //addpet
 await page.getByRole('button',{name: 'Reject All'}).click();
 //await page.getByRole('button',{name: 'Maybe Later'}).click();
