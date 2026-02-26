@@ -5,7 +5,9 @@ const{APIutils} = require('./Utils/APIutils.js');
 let tokens
 //API Part- test.beforeALL
 test.beforeAll(async()=>{
-    const apiContext = await request.newContext();
+    const apiContext = await request.newContext({
+    ignoreHTTPSErrors: true
+});
     const apiUtilsPage = new APIutils(apiContext);
     tokens = await apiUtilsPage.authorizeToken()
     const addpet = await apiUtilsPage.addpet(tokens);

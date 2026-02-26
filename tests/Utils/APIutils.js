@@ -1,6 +1,7 @@
 
 const loginURL = "https://kinship-api-staging.kinship.engineering/auth/v2-sign-in";
 const addPetURL = "https://kinship-api-staging.kinship.engineering/my-pet-profile";
+const {UniqueGenerator} = require("./UniqueGenerator.js");
 const headers = {};
 
 class APIutils {
@@ -24,7 +25,9 @@ class APIutils {
         })
     }
     async addpet(token) {
-        await this.postcall(addPetURL, this.addpetPayload(), await this.pettokenHeader(token))
+        const petName = UniqueGenerator.getUniqueName();
+        await this.postcall(addPetURL, this.addpetPayload(petName), await this.pettokenHeader(token))
+        return petName;
     }
 
     async pettokenHeader(token) {
@@ -47,9 +50,9 @@ class APIutils {
 
 
 
-    addpetPayload() {
+    addpetPayload(petName) {
         return {
-            "name": "Nivinay",
+            "name": petName,
             "animal_type": "DOG",
             "breed": "Africanis Dog",
             "birth_date": "2021-09-01",
