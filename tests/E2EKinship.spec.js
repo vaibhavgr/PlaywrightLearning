@@ -33,7 +33,7 @@ await page.pause();
 });
 
 
-test.only('E2E Kinship Pet Removal', async ({page})=>{
+test('E2E Kinship Pet Removal', async ({page})=>{
 await page.goto("https://www.stg.kinship.com/uk");
 await page.addInitScript(value=>{
   window.localStorage.setItem('access_token',value);  

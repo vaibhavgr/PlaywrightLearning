@@ -32,5 +32,16 @@ array.reduce((accumulator, currentValue) => {
 -------------------------------------------------------------------
 
 
+fixtures : 
+Fixture me 3 steps hote hain:
+Setup (fixture start)
+await use(value) → test ko value dena
+Teardown (test ke baad cleanup)
 
+use() me fixture ki value pass hoti hai, fixture ka naam nahi.
+fixtureName: async(args, use) => {
+   const value = something
+   await use(value)
+
+}
 
