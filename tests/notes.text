@@ -45,3 +45,60 @@ fixtureName: async(args, use) => {
 
 }
 
+-------------------------------------
+Promise (microtask) > setTimeout (macrotask)
+console.log("A");
+setTimeout(() => console.log("B"), 0);
+Promise.resolve().then(() => console.log("C"));
+console.log("D");
+
+output : A D C B
+ Queues me kya gaya?
+
+setTimeout → Callback Queue (macrotask)
+
+Promise.then → Microtask Queue 🔥 (high priority)
+
+Event loop ka rule:
+
+👉 Call stack empty hote hi:
+
+Microtask queue execute hoti hai
+👉 "Promise VIP hai, setTimeout general line me hai" 😄
+Phir Callback queue
+-----------------------------------------------
+Promise Concept 
+"Promises are used to handle asynchronous operations without blocking the main thread and to manage execution order."
+fetch("api")
+  .then(res => res.json())
+  .then(data => {
+    console.log("Data use karo", data);
+  });
+
+  fetch("api")              // Promise 1
+  .then(res => res.json()) // Promise 2
+  .then(data => {...})     // Promise 3
+
+  //////////////////////////////////////////////////////////
+  timeout : 
+  in config.js - there is already 
+  const Config=({
+ 
+  timeout : 40*1000, // this timeout mean test should be finish in 40 seconds this have highest priorty. by default 30 sec
+  expect :{
+    timeout: 10*1000
+  },
+  use: {
+    browserName : 'chromium',
+    headless : false,
+    colorScheme: 'dark',
+
+    navigationTimeout : 10000 
+    actionTimeout : 50000 (Click,fill) // no point of giving timeput here if above is written 40secon beacuse 
+     we telling playwright that it finish in 40 seconds if exceed 40 error throw 
+    
+    
+  },  
+});
+
+

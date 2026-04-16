@@ -10,7 +10,7 @@ const test = vaibhav.extend({
 
 });
 
-test.only('my test', async ({ vinodkafixture }) => {
+test('my test', async ({ vinodkafixture }) => {
 
     console.log(vinodkafixture);
 

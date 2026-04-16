@@ -16,6 +16,7 @@ const Config=({
     headless : false,
     colorScheme: 'dark',
     
+    
   },  
 });
 
